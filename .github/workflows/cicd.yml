@@ -16,6 +16,7 @@ jobs:
 
   # job 2
   build:
+    needs: [code]
     runs-on: ubuntu-latest
     steps:
       - name: Build Docker Container
@@ -23,6 +24,7 @@ jobs:
 
   # job 3
   test:
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: Test the container
@@ -30,6 +32,7 @@ jobs:
 
   # job 4
   deploy:
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
       - name: Deploying the Apps
