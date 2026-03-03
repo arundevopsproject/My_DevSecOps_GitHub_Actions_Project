@@ -43,6 +43,7 @@ jobs:
 
   # job 4
   deploy:
+    if: inputs.environment == 'dev' 
     needs: [test]
     runs-on: ubuntu-latest
     steps:
