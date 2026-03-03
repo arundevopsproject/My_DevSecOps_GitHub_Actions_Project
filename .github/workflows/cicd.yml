@@ -17,7 +17,6 @@ on:
           - qa
 
 jobs:
-
   # job 1
   code:
     runs-on: ubuntu-latest
