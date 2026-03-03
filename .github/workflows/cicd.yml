@@ -14,6 +14,7 @@ on:
           - dev
           - prod
           - staging
+          - qa
 
 jobs:
 
