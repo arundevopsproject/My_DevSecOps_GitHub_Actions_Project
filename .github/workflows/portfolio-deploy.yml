@@ -1,1 +1,50 @@
+
+# Portfolio Project Deployment Workflow
 name: Portfolio
+
+# Trigger the workflow on push to the main branch
+on:
+    push:
+        branches:
+            - main
+# Permission to access the GitHub Pages API to deploy the Portfolio code
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+# Jobs to deploy the Portfolio code to GitHub Pages
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        environment:
+            name: github-pages
+            url: ${{ steps.deploy-pages.outputs.page_url }}
+
+        steps:
+            # get access to the Portfolio code via pre-built actions
+            # Clone or Checkout the code from the repository to the runner
+            # STEP-1
+            - name: Checkout Code
+              uses: actions/checkout@v4 
+
+            # setup GitHub Pages to deploy the Portfolio code
+            # STEP-2
+            - name: Setup GitHub Pages
+              uses: actions/configure-pages@v4
+
+            # static code artifacts
+            # STEP-3
+            - name: Upload static files
+              uses: actions/upload-pages-artifact@v4
+
+            # deploy the static code artifacts to GitHub Pages
+            # STEP-4
+            - name: Deploy to GitHub Pages
+              uses: actions/deploy-pages@v4
+
+          
+
+            
+
