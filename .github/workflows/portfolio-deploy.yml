@@ -7,6 +7,8 @@ on:
     push:
         branches:
             - main
+    workflow_dispatch:
+
 # Permission to access the GitHub Pages API to deploy the Portfolio code
 permissions:
     contents: read
@@ -37,6 +39,8 @@ jobs:
             # STEP-3
             - name: Upload static files
               uses: actions/upload-pages-artifact@v4
+              with:
+                path: "."
 
             # deploy the static code artifacts to GitHub Pages
             # STEP-4
