@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,439 +6,370 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Arun Baidya | DevOps</title>
+    <title>AI Agent Automation | Arun Baidya</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Devicon (Open source DevOps tool icons) -->
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <style>
 
-    <!-- ThreeJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            scroll-behavior: smooth;
+        }
 
-<style>
+        body {
+            background: #ffffff;
+            color: #222;
+        }
 
-/* Global */
+        /* NAVBAR */
 
-* {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-    scroll-behavior:smooth;
-}
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 8%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
 
-body {
-    background:white;
-    color:#333;
-    overflow-x:hidden;
-}
+        nav h2 {
+            color: #0066ff;
+            font-weight: 700;
+        }
 
-/* 3D Background */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
 
-#brain-container {
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    z-index:-1;
-    opacity:0.15;
-}
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+        }
 
-/* Navigation */
+        nav a:hover {
+            color: #0066ff;
+        }
 
-nav {
-    position:fixed;
-    top:0;
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px 8%;
-    background:#1e66f5;
-    color:white;
-    z-index:999;
-}
+        /* HERO */
 
-nav ul {
-    display:flex;
-    list-style:none;
-    gap:25px;
-}
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 10%;
+            background: linear-gradient(to right, #f6f9ff, #eef3ff);
+        }
 
-nav a {
-    text-decoration:none;
-    color:white;
-    font-size:14px;
-}
+        .hero h1 {
+            font-size: 48px;
+            color: #111;
+            margin-bottom: 20px;
+        }
 
-nav a:hover {
-    opacity:0.8;
-}
+        .hero span {
+            color: #0066ff;
+        }
 
-/* Sections */
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 35px;
+            color: #555;
+        }
 
-section {
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:120px 10%;
-}
+        .btn {
+            padding: 14px 30px;
+            background: #0066ff;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-/* Glass Card */
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
 
-.glass {
-    background:white;
-    border-radius:20px;
-    padding:50px;
-    width:100%;
-    max-width:1100px;
-    box-shadow:0 10px 40px rgba(0,0,0,0.08);
-}
+        /* SECTION */
 
-/* Hero */
+        section {
+            padding: 90px 10%;
+        }
 
-.hero {
-    text-align:center;
-}
+        section h2 {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 40px;
+            color: #111;
+        }
 
-.hero h1 {
-    font-size:52px;
-    margin-bottom:10px;
-}
+        /* SERVICES */
 
-.hero span {
-    color:#1e66f5;
-}
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+            gap: 30px;
+        }
 
-.hero p {
-    margin-bottom:30px;
-}
+        .card {
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
 
-/* Button */
+        .card:hover {
+            transform: translateY(-8px);
+        }
 
-.button {
-    padding:12px 30px;
-    border:none;
-    border-radius:30px;
-    background:#1e66f5;
-    color:white;
-    cursor:pointer;
-}
+        .card h3 {
+            color: #0066ff;
+            margin-bottom: 12px;
+        }
 
-.button:hover {
-    transform:scale(1.05);
-}
+        /* BENEFITS */
 
-/* DevOps Logo Slider */
+        .benefits {
+            background: #f6f9ff;
+        }
 
-.logo-slider {
-    width:100%;
-    overflow:hidden;
-    margin-top:50px;
-}
+        .benefit-item {
+            text-align: center;
+        }
 
-.logo-track {
-    display:flex;
-    gap:60px;
-    width:max-content;
-    animation:scroll 25s linear infinite;
-}
+        .benefit-item h3 {
+            font-size: 28px;
+            color: #0066ff;
+        }
 
-.logo-track img {
-    height:50px;
-}
+        /* TECH STACK */
 
-@keyframes scroll {
-    0% {
-        transform:translateX(100%);
-    }
-    100% {
-        transform:translateX(-100%);
-    }
-}
+        .tech {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
 
-/* Skills */
+        .tech span {
+            background: #eef3ff;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
 
-.skills {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-    gap:20px;
-    margin-top:30px;
-}
+        /* CONTACT */
 
-.skill {
-    padding:20px;
-    border-radius:12px;
-    text-align:center;
-    background:#f5f7ff;
-}
+        .contact-form {
+            max-width: 500px;
+            margin: auto;
+        }
 
-/* Projects */
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
 
-.projects {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-    margin-top:30px;
-}
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #f5f5f5;
+            margin-top: 60px;
+            font-size: 14px;
+        }
 
-.project {
-    padding:25px;
-    border-radius:15px;
-    background:#f5f7ff;
-}
+        @media (max-width:768px) {
 
-/* Contact */
+            .hero h1 {
+                font-size: 34px;
+            }
 
-.contact input,
-.contact textarea {
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border-radius:10px;
-    border:1px solid #ddd;
-}
+            nav ul {
+                display: none;
+            }
 
-/* Footer */
+        }
 
-footer {
-    text-align:center;
-    padding:20px;
-}
-
-</style>
+    </style>
 
 </head>
 
-
 <body>
-
-<div id="brain-container"></div>
-
-<!-- NAVBAR -->
 
 <nav>
 
-    <h2>Arun Baidya</h2>
+    <h2>AI Agent Automation</h2>
 
     <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#technology">Technology</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
 
 </nav>
 
+<!-- HERO -->
 
-<!-- HOME -->
+<section class="hero">
 
-<section id="home">
+    <div>
 
-<div class="glass hero">
+        <h1>
+            AI Agents That <span>Automate Your Business</span>
+        </h1>
 
-<h1>Hello, I'm <span>Arun Baidya</span></h1>
+        <p>
+            We design and implement intelligent AI Agent systems that automate operations,
+            reduce costs, and increase productivity for businesses worldwide.
+        </p>
 
-<p>
-DevOps | DevSecOps | AWS | MLOps | AIOps | GenAI | Agentic AI
-</p>
+        <button class="btn" onclick="document.getElementById('contact').scrollIntoView()">
+            Book Free Consultation
+        </button>
 
-<button class="button"
-onclick="document.getElementById('projects').scrollIntoView()">
-View My Work
-</button>
-
-
-<!-- DEVOPS TOOLS SLIDER -->
-
-<div class="logo-slider">
-
-<div class="logo-track">
-
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redhat/redhat-original.svg">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg">
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
+<!-- SERVICES -->
 
-<!-- ABOUT -->
+<section id="services">
 
-<section id="about">
+    <h2>AI Agent Automation Services</h2>
 
-<div class="glass">
+    <div class="grid">
 
-<h2>About Me</h2>
+        <div class="card">
+            <h3>AI Business Agents</h3>
+            <p>
+                Intelligent AI agents that automate repetitive business tasks such as
+                reporting, analytics, document processing, and workflow automation.
+            </p>
+        </div>
 
-<br>
+        <div class="card">
+            <h3>Customer Support AI</h3>
+            <p>
+                AI-powered agents capable of handling customer queries,
+                ticketing systems, and support automation 24/7.
+            </p>
+        </div>
 
-<p>
+        <div class="card">
+            <h3>AI Sales Automation</h3>
+            <p>
+                Autonomous agents that qualify leads, schedule meetings,
+                and optimize sales pipelines automatically.
+            </p>
+        </div>
 
-DevOps Engineer specializing in cloud infrastructure,
-DevSecOps automation, Kubernetes platforms, and AI-driven operations.
+        <div class="card">
+            <h3>AI DevOps Agents</h3>
+            <p>
+                AI agents that monitor infrastructure, analyze logs,
+                detect anomalies and assist DevOps teams with automation.
+            </p>
+        </div>
 
-Focused on building highly automated,
-secure and scalable cloud-native systems.
-
-</p>
-
-</div>
-
-</section>
-
-
-<!-- SKILLS -->
-
-<section id="skills">
-
-<div class="glass">
-
-<h2>Core Skills</h2>
-
-<div class="skills">
-
-<div class="skill">AWS</div>
-<div class="skill">Kubernetes</div>
-<div class="skill">Terraform</div>
-<div class="skill">CI/CD</div>
-<div class="skill">Docker</div>
-<div class="skill">DevSecOps</div>
-<div class="skill">MLOps</div>
-<div class="skill">GenAI</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
+<!-- BENEFITS -->
 
-<!-- PROJECTS -->
+<section id="benefits" class="benefits">
 
-<section id="projects">
+    <h2>Business Impact</h2>
 
-<div class="glass">
+    <div class="grid">
 
-<h2>Featured Projects</h2>
+        <div class="benefit-item">
+            <h3>70%</h3>
+            <p>Operational Cost Reduction</p>
+        </div>
 
-<div class="projects">
+        <div class="benefit-item">
+            <h3>5x</h3>
+            <p>Faster Business Processes</p>
+        </div>
 
-<div class="project">
-<h3>EKS Platform</h3>
-<p>Production Kubernetes platform with autoscaling and security.</p>
-</div>
+        <div class="benefit-item">
+            <h3>24/7</h3>
+            <p>Autonomous AI Operations</p>
+        </div>
 
-<div class="project">
-<h3>DevSecOps Pipeline</h3>
-<p>Secure CI/CD pipeline integrating SAST, DAST and container scanning.</p>
-</div>
-
-<div class="project">
-<h3>MLOps Platform</h3>
-<p>Automated ML training and deployment pipelines.</p>
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
+<!-- TECHNOLOGY -->
+
+<section id="technology">
+
+    <h2>Technology Stack</h2>
+
+    <div class="tech">
+
+        <span>GenAI</span>
+        <span>Agentic AI</span>
+        <span>LLM Agents</span>
+        <span>LangChain</span>
+        <span>OpenAI</span>
+        <span>Vector Databases</span>
+        <span>Automation APIs</span>
+        <span>Cloud Infrastructure</span>
+
+    </div>
+
+</section>
 
 <!-- CONTACT -->
 
 <section id="contact">
 
-<div class="glass contact">
+    <h2>Start Your AI Automation Journey</h2>
 
-<h2>Contact</h2>
+    <div class="contact-form">
 
-<input type="text" placeholder="Your Name">
-<input type="email" placeholder="Email">
+        <input type="text" placeholder="Your Name">
 
-<textarea rows="4" placeholder="Message"></textarea>
+        <input type="email" placeholder="Business Email">
 
-<button class="button">Send Message</button>
+        <textarea rows="5" placeholder="Tell us about your business challenge"></textarea>
 
-</div>
+        <button class="btn">Request AI Consultation</button>
+
+    </div>
 
 </section>
 
-
 <footer>
 
-© 2026 Arun Baidya
+© 2026 Arun Baidya | AI Agent Automation Services
 
 </footer>
-
-
-<script>
-
-/* THREE JS AI BRAIN */
-
-const scene = new THREE.Scene();
-
-const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-);
-
-const renderer = new THREE.WebGLRenderer({ alpha:true });
-
-renderer.setSize(window.innerWidth, window.innerHeight);
-
-document
-.getElementById("brain-container")
-.appendChild(renderer.domElement);
-
-const geometry = new THREE.SphereGeometry(8,64,64);
-
-const material = new THREE.PointsMaterial({
-    color:0x1e66f5,
-    size:0.05
-});
-
-const brain = new THREE.Points(geometry,material);
-
-scene.add(brain);
-
-camera.position.z = 15;
-
-function animate(){
-
-    requestAnimationFrame(animate);
-
-    brain.rotation.y += 0.002;
-    brain.rotation.x += 0.001;
-
-    renderer.render(scene,camera);
-
-}
-
-animate();
-
-</script>
 
 </body>
 
