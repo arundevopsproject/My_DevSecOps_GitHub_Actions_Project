@@ -2,302 +2,419 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Architect Portfolio</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
+  <title>Arun Baidya | DevOps Engineer</title>
 
-        body {
-            height: 100vh;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: white;
-            overflow-x: hidden;
-        }
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  >
 
-        /* Navigation */
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  >
 
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 80px;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-        }
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-        nav h2 {
-            letter-spacing: 2px;
-        }
+  <style>
 
-        nav ul {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
 
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-size: 14px;
-            transition: 0.3s;
-        }
+    body {
+      color: white;
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1c1c1c);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      overflow-x: hidden;
+    }
 
-        nav ul li a:hover {
-            color: #00e0ff;
-        }
+    @keyframes gradientBG {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-        /* Sections */
+    /* 3D Background */
 
-        section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 100px 10%;
-        }
+    #brain-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
 
-        /* Glass Card */
+    /* Floating DevOps Icons */
 
-        .glass {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 50px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            transition: 0.4s;
-        }
+    .floating-icons i {
+      position: fixed;
+      font-size: 40px;
+      opacity: 0.15;
+      animation: float 10s infinite ease-in-out;
+    }
 
-        .glass:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-        }
+    .floating-icons i:nth-child(1) { left: 5%;  top: 20%; }
+    .floating-icons i:nth-child(2) { left: 90%; top: 30%; }
+    .floating-icons i:nth-child(3) { left: 10%; top: 70%; }
+    .floating-icons i:nth-child(4) { left: 80%; top: 80%; }
+    .floating-icons i:nth-child(5) { left: 50%; top: 10%; }
+    .floating-icons i:nth-child(6) { left: 70%; top: 60%; }
 
-        /* Hero */
+    @keyframes float {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-30px); }
+      100% { transform: translateY(0px); }
+    }
 
-        .hero {
-            text-align: center;
-        }
+    /* Navigation */
 
-        .hero h1 {
-            font-size: 50px;
-            margin-bottom: 15px;
-        }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 8%;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      z-index: 999;
+    }
 
-        .hero span {
-            color: #00e0ff;
-        }
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
 
-        .hero p {
-            opacity: 0.8;
-            margin-bottom: 30px;
-        }
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-size: 14px;
+      transition: 0.3s;
+    }
 
-        .btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 25px;
-            background: #00e0ff;
-            color: black;
-            font-weight: 500;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+    nav a:hover {
+      color: #00eaff;
+    }
 
-        .btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px #00e0ff;
-        }
+    /* Sections */
 
-        /* Skills */
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 10%;
+    }
 
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
+    /* Glass Cards */
 
-        .skill {
-            padding: 20px;
-            text-align: center;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
-        }
+    .glass {
+      background: rgba(255,255,255,0.06);
+      border-radius: 20px;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 50px;
+      width: 100%;
+      max-width: 1100px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      transition: 0.4s;
+    }
 
-        .skill:hover {
-            background: #00e0ff;
-            color: black;
-            transform: scale(1.1);
-        }
+    .glass:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
 
-        /* Projects */
+    /* Hero */
 
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
+    .hero {
+      text-align: center;
+    }
 
-        .project {
-            padding: 25px;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            transition: 0.4s;
-        }
+    .hero h1 {
+      font-size: 52px;
+      margin-bottom: 10px;
+    }
 
-        .project:hover {
-            transform: translateY(-10px);
-            background: #00e0ff;
-            color: black;
-        }
+    .hero span {
+      color: #00eaff;
+    }
 
-        /* Contact */
+    .hero p {
+      opacity: 0.9;
+      margin-bottom: 30px;
+    }
 
-        .contact {
-            text-align: center;
-        }
+    .button {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      background: #00eaff;
+      color: black;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-        .contact input,
-        .contact textarea {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
+    .button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #00eaff;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            opacity: 0.7;
-        }
-    </style>
+    /* Skills */
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .skill {
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      background: rgba(255,255,255,0.06);
+      transition: 0.3s;
+    }
+
+    .skill:hover {
+      background: #00eaff;
+      color: black;
+      transform: scale(1.1);
+    }
+
+    /* Projects */
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .project {
+      padding: 25px;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.06);
+      transition: 0.4s;
+    }
+
+    .project:hover {
+      background: #00eaff;
+      color: black;
+      transform: translateY(-10px);
+    }
+
+    /* Contact */
+
+    .contact input,
+    .contact textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      opacity: 0.7;
+    }
+
+  </style>
 
 </head>
 
 <body>
 
-    <nav>
-        <h2>DevOps Portfolio</h2>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+  <div id="brain-container"></div>
 
-    <!-- Hero -->
+  <div class="floating-icons">
+    <i class="fa-brands fa-aws"></i>
+    <i class="fa-brands fa-docker"></i>
+    <i class="fa-brands fa-github"></i>
+    <i class="fa-brands fa-jenkins"></i>
+    <i class="fa-brands fa-linux"></i>
+    <i class="fa-brands fa-git-alt"></i>
+  </div>
 
-    <section id="home">
-        <div class="glass hero">
-            <h1>Hello, I'm <span>DevOps Architect</span></h1>
-            <p>Cloud | Kubernetes | Terraform | CI/CD | Automation</p>
-            <button class="btn">View My Work</button>
+  <nav>
+    <h2>Arun Baidya</h2>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="home">
+    <div class="glass hero">
+
+      <h1>Hello, I'm <span>Arun Baidya</span></h1>
+
+      <p>
+        DevOps Engineer | DevSecOps | AWS | MLOps | AIOps | GenAI | Agentic AI
+      </p>
+
+      <button
+        class="button"
+        onclick="document.getElementById('projects').scrollIntoView()"
+      >
+        View My Work
+      </button>
+
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="glass">
+
+      <h2>About Me</h2>
+      <br>
+
+      <p>
+        DevOps Engineer specializing in secure cloud platforms, Kubernetes infrastructure,
+        DevSecOps automation, MLOps systems and AI-driven operations.
+
+        Focused on building intelligent, resilient and highly automated
+        cloud-native platforms.
+      </p>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="glass">
+
+      <h2>Core Skills</h2>
+
+      <div class="skills">
+        <div class="skill">AWS</div>
+        <div class="skill">Kubernetes</div>
+        <div class="skill">Terraform</div>
+        <div class="skill">CI/CD</div>
+        <div class="skill">Docker</div>
+        <div class="skill">DevSecOps</div>
+        <div class="skill">MLOps</div>
+        <div class="skill">GenAI</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="glass">
+
+      <h2>Featured Projects</h2>
+
+      <div class="projects">
+
+        <div class="project">
+          <h3>EKS Platform</h3>
+          <p>Production Kubernetes platform with autoscaling and security.</p>
         </div>
-    </section>
 
-    <!-- About -->
-
-    <section id="about">
-        <div class="glass">
-            <h2>About Me</h2>
-            <br>
-            <p>
-                Experienced DevOps Lead with 15+ years in IT and 5+ years specializing in
-                cloud infrastructure, Kubernetes, CI/CD automation, and scalable platform engineering.
-                Focused on building secure, high-availability architectures and efficient DevOps pipelines.
-            </p>
+        <div class="project">
+          <h3>DevSecOps Pipeline</h3>
+          <p>Secure CI/CD pipeline with SAST, DAST and container scanning.</p>
         </div>
-    </section>
 
-    <!-- Skills -->
-
-    <section id="skills">
-        <div class="glass">
-            <h2>Skills</h2>
-
-            <div class="skills">
-                <div class="skill">AWS</div>
-                <div class="skill">Kubernetes</div>
-                <div class="skill">Docker</div>
-                <div class="skill">Terraform</div>
-                <div class="skill">Jenkins</div>
-                <div class="skill">GitHub Actions</div>
-                <div class="skill">Linux</div>
-                <div class="skill">Helm</div>
-            </div>
-
+        <div class="project">
+          <h3>MLOps Platform</h3>
+          <p>Automated ML training and deployment pipelines.</p>
         </div>
-    </section>
 
-    <!-- Projects -->
+      </div>
 
-    <section id="projects">
-        <div class="glass">
-            <h2>Projects</h2>
+    </div>
+  </section>
 
-            <div class="projects">
+  <section id="contact">
+    <div class="glass contact">
 
-                <div class="project">
-                    <h3>EKS Platform</h3>
-                    <p>Production grade Kubernetes cluster with autoscaling, security and monitoring.</p>
-                </div>
+      <h2>Contact</h2>
 
-                <div class="project">
-                    <h3>Golden AMI Pipeline</h3>
-                    <p>Packer based hardened AMI pipeline integrated with CI/CD.</p>
-                </div>
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Email">
+      <textarea rows="4" placeholder="Message"></textarea>
 
-                <div class="project">
-                    <h3>Terraform Cloud Infra</h3>
-                    <p>Reusable infrastructure modules for scalable AWS environments.</p>
-                </div>
+      <button class="button">Send Message</button>
 
-            </div>
+    </div>
+  </section>
 
-        </div>
-    </section>
+  <footer>
+    © 2026 Arun Baidya
+  </footer>
 
-    <!-- Contact -->
+  <script>
 
-    <section id="contact">
-        <div class="glass contact">
-            <h2>Contact Me</h2>
+    const scene = new THREE.Scene();
 
-            <input type="text" placeholder="Your Name">
-            <input type="email" placeholder="Your Email">
-            <textarea rows="4" placeholder="Message"></textarea>
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
 
-            <button class="btn">Send Message</button>
-        </div>
-    </section>
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
-    <footer>
-        © 2026 DevOps Portfolio
-    </footer>
+    document
+      .getElementById("brain-container")
+      .appendChild(renderer.domElement);
+
+    const geometry = new THREE.SphereGeometry(8, 64, 64);
+
+    const material = new THREE.PointsMaterial({
+      color: 0x00eaff,
+      size: 0.05
+    });
+
+    const brain = new THREE.Points(geometry, material);
+
+    scene.add(brain);
+
+    camera.position.z = 15;
+
+    function animate() {
+
+      requestAnimationFrame(animate);
+
+      brain.rotation.y += 0.002;
+      brain.rotation.x += 0.001;
+
+      renderer.render(scene, camera);
+
+    }
+
+    animate();
+
+  </script>
 
 </body>
 
 </html>
+
