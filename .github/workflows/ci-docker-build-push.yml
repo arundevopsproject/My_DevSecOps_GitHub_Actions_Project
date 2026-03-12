@@ -24,7 +24,7 @@ jobs:
                 context: .
                 push: true
                 tags: |
-                    ${{ secrets.DOCKER_USERNAME }}/github-actions-app:${{ github.GITHUB_HEAD_REF }}
+                    ${{ secrets.DOCKER_USERNAME }}/github-actions-app:${{ github.ref_name }}
                     ${{ secrets.DOCKER_USERNAME }}/github-actions-app:latest
                     ${{ secrets.DOCKER_USERNAME }}/github-actions-app:${{ github.GITHUB_SHA }}
                     
